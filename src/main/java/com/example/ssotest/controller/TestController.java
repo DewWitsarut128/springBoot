@@ -23,6 +23,11 @@ public class TestController {
         try {
             testEntity.setRequestDate(null);
 
+            if (testEntity.getSystemid() == null || testEntity.getUserid() == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new Response("E000002", "ข้อมูลไม่สมบูรณ์ กรุณาตรวจสอบอีกครั้ง", null));
+            }
+
             TestEntity savedUserTest = testService.saveTokenDetails(testEntity);
             return ResponseEntity.ok(new Response("I07000", "ทำรายการเรียบร้อย", savedUserTest));
         } catch (Exception e) {

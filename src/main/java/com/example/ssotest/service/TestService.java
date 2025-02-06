@@ -12,12 +12,7 @@ public class TestService {
     private TestRepository testRepository;
 
     public TestEntity saveTokenDetails(TestEntity testEntity) {
-        try {
-            return testRepository.save(testEntity);
-        } catch (Exception e) {
-            System.out.println("Error saving to database: " + e.getMessage());
-            throw e;
-        }
+        return testRepository.save(testEntity);
     }
 }
 
